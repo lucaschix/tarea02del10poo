@@ -12,9 +12,8 @@ public class Biblioteca {
 
     public boolean Agregar_libro() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingresa el titulo, autor, ISBN, genero,cantidad y disponivilidad(true/false) del libro");
+        System.out.println("Ingresa  titulo, autor, ISBN, genero, cantidad y disponivilidad(true/false) del libro que desea agregar");
         String Titulo = scanner.nextLine();
-
         System.out.println("Ingresa el titulo, autor, ISBN, genero,cantidad y disponivilidad(true/false) del libro");
         String Autor = scanner.nextLine();
         String ISBN = scanner.nextLine();
@@ -26,9 +25,6 @@ public class Biblioteca {
         System.out.println("Libro agregado con éxito.");
         return true;
     }
-
-
-
     public Libro buscarLibro(String Titulo){
         for(Libro libro : this.nombrevarlista_de_libros ){
             if(libro.getTitulo().equals(Titulo)){
@@ -37,25 +33,36 @@ public class Biblioteca {
         }
         return null;
     }
-    public void prestarLibro(String Titulo){
+    public void prestarLibro(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingresa el tiulo del libro que deseas prestar");
+        String Titulo = scanner.nextLine();
         Libro libro = buscarLibro(Titulo);
         if(libro != null && libro.getDisponible()){
             libro.setDisponible(false);
             libro.prestar();
+
         }
     }
 
-    public void devolverLibro(String Titulo){
+    public void devolverLibro(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingresa el tiulo del libro que deseas devolver");
+        String Titulo = scanner.nextLine();
         Libro libro = buscarLibro(Titulo);
         if(libro != null){
             libro.setDisponible(true);
             libro.devolver();
         }
     }
-    public void eliminarlibro(String Titulo){
+    public void eliminarlibro(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingresa el tiulo del libro que deseas eliminar");
+        String Titulo = scanner.nextLine();
         for(Libro libro : this.nombrevarlista_de_libros ){
             if(libro.getTitulo().equals(Titulo)){
                 this.nombrevarlista_de_libros.remove(libro);
+                System.out.println("libro eliminado");
                 break;
             }
         }
@@ -63,12 +70,7 @@ public class Biblioteca {
     public void mostrar_libros_disponibles(){
         for(Libro libro : this.nombrevarlista_de_libros ){
             if(libro.getDisponible()){
-                System.out.println("Título: " + libro.getTitulo());
-                System.out.println("Autor: " + libro.getAutor());
-                System.out.println("Género: " + libro.getGenero());
-                System.out.println("ISBN: " + libro.getISBN());
-                System.out.println("Cantidad disponible: " + libro.getCantidad());
-                System.out.println();
+                System.out.println("Listado de libros:\n Título: "+ libro.getTitulo()+" | Autor: " + libro.getAutor()+" | Género: " + libro.getGenero()+" | ISBN: " + libro.getISBN() +" | Cantidad disponible: " + libro.getCantidad());
             }
         }
     }

@@ -46,13 +46,13 @@ public class Main {
 
                     break;
                 case 4:
-                    biblioteca.prestarLibro(Titulo);
+                    biblioteca.prestarLibro();
                     break;
                 case 5:
-                    biblioteca.devolverLibro(Titulo);
+                    biblioteca.devolverLibro();
                     break;
                 case 6:
-                    biblioteca.eliminarlibro(Titulo);
+                    biblioteca.eliminarlibro();
                     break;
                 case 7:
                     biblioteca.mostrar_libros_disponibles();

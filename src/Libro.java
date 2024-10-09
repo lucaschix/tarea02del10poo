@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Scanner;
 
 public class Libro {
     private String Titulo;
@@ -66,6 +67,7 @@ public class Libro {
         for (Libro libro : libros) {
             if (libro.getTitulo().equals(Titulo)) {
                 libro.setCantidad(libro.getCantidad() - 1);
+                System.out.println("Libro prestado");
                 return;
             }
         }
@@ -75,6 +77,7 @@ public class Libro {
         for (Libro libro : libros ) {
             if (libro.getTitulo().equals(Titulo)) {
                 libro.setCantidad(libro.getCantidad() + 1);
+                System.out.println("Libro devuelto");
                 return;
             }
         }
