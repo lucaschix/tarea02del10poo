@@ -50,7 +50,7 @@ public class Main {
                 case 3:
                     biblioteca.Buscar_por_autor();
                 case 4:
-                    //biblioteca.prestarLibro();
+                    biblioteca.prestarLibro();
                     break;
                 case 5:
                     biblioteca.devolverLibro();

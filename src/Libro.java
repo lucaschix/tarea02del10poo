@@ -63,16 +63,21 @@ public class Libro {
             return null;
         }
     }
-    public void prestar() {
+    public void prestar(String titulo) {
         for (Libro libro : libros) {
-            if (libro.getTitulo().equals(Titulo)) {
-                libro.setCantidad(libro.getCantidad() - 1);
-                System.out.println("Libro prestado");
+            if (libro.getTitulo().equals(titulo)) {
+                if (libro.getCantidad() > 0) {
+                    libro.setCantidad(libro.getCantidad() - 1);
+                    System.out.println("Libro prestado");
+                } else {
+                    System.out.println("No hay copias disponibles para prestar");
+                }
                 return;
             }
         }
         System.out.println("No se encontró el libro");
     }
+
     public void devolver() {
         for (Libro libro : libros ) {
             if (libro.getTitulo().equals(Titulo)) {

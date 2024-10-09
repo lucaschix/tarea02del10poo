@@ -43,17 +43,20 @@ public class Biblioteca {
         }
         return null;
     }
-    public void prestarLibro(){
+    public void prestarLibro() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingresa el tiulo del libro que deseas prestar");
-        String Titulo = scanner.nextLine();
-        Libro libro = buscarLibro(Titulo);
-        if(libro != null && libro.getDisponible()){
-            libro.setDisponible(false);
-            libro.prestar();
+        System.out.println("Ingresa el título del libro que deseas prestar");
+        String titulo = scanner.nextLine();
+        Libro libro = buscarLibro(titulo);
 
+        if (libro != null && libro.getCantidad() > 0) { // Verificamos que haya copias disponibles
+            libro.setCantidad(libro.getCantidad() - 1);
+            System.out.println("Libro prestado");
+        } else {
+            System.out.println("No se encontró el libro o no hay copias disponibles");
         }
     }
+
     public void devolverLibro(){
         String Titulo="";
         try{
