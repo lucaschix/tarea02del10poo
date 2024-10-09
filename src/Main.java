@@ -4,14 +4,11 @@ public class Main {
 
     public static void main(String[] args) {
         // 1. Crear un objeto de la clase Biblioteca
-        Biblioteca biblioteca = new Biblioteca();
-        mostrarMenu();
-        biblioteca.Agregar_libro("El Señor de los Anillos", "J.R.R. Tolkien", "1234567890", "Fantasía", 5, true);
-        biblioteca.Agregar_libro("El Hobbit", "J.R.R. Tolkien", "9876543210", "Fantasía", 3, true);
-        biblioteca.Agregar_libro("La Sombra del Viento", "Carlos Ruiz Zafón", "1111111111", "Misterio", 2, true);
-        biblioteca.Agregar_libro("El Código Da Vinci", "Dan Brown", "2222222222", "Misterio", 4, true);
+        biblioteca = new Biblioteca(); // Usa la variable de clase
 
+        mostrarMenu(); // Llama al menú después de inicializar la biblioteca
     }
+
 
     public static void mostrarMenu() {
         Scanner scanner = new Scanner(System.in);
@@ -22,7 +19,6 @@ public class Main {
             System.out.println("** Biblioteca Menu **");
             System.out.println("1. Agregar Libro");
             System.out.println("2. Buscar Libro");
-            System.out.println("3. Buscar Libros");
             System.out.println("4. Prestar Libro");
             System.out.println("5. Devolver Libro");
             System.out.println("6. Eliminar Libro");
@@ -33,13 +29,21 @@ public class Main {
             opcion = scanner.nextInt();
             switch (opcion) {
                 case 1:
-                    
+                    biblioteca.Agregar_libro();
                     break;
                 case 2:
-                    biblioteca.buscarLibro(Titulo );
+                    System.out.print("Ingrese el título del libro: ");
+                    Titulo = scanner.next(); // Captura el título ingresado por el usuario
+                    Libro libro = biblioteca.buscarLibro(Titulo);
+                    if (libro != null) {
+                        System.out.println("Libro encontrado: " + libro);
+                    } else {
+                        System.out.println("Libro no encontrado.");
+                    }
                     break;
+
                 case 3:
-                    biblioteca.buscarLibros(Titulo);
+
                     break;
                 case 4:
                     biblioteca.prestarLibro(Titulo);

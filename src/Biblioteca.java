@@ -9,11 +9,25 @@ public class Biblioteca {
         this.nombrevarlista_de_libros = new ArrayList<>();
     }
 
-    public boolean Agregar_libro(String Titulo,String Autor,String ISBN,String Genero,int Cantidad,boolean Disponible){
-        Libro libro = new Libro(Titulo, Autor, ISBN, Genero, Cantidad, Disponible);
+
+    public boolean Agregar_libro() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingresa el titulo, autor, ISBN, genero,cantidad y disponivilidad(true/false) del libro");
+        String Titulo = scanner.nextLine();
+
+        System.out.println("Ingresa el titulo, autor, ISBN, genero,cantidad y disponivilidad(true/false) del libro");
+        String Autor = scanner.nextLine();
+        String ISBN = scanner.nextLine();
+        String Genero = scanner.nextLine();
+        int Cantidad = scanner.nextInt();
+        boolean Disponible = scanner.nextBoolean();
+        Libro libro = new Libro(Titulo, Autor, Genero, ISBN, Cantidad, Disponible);
         this.nombrevarlista_de_libros.add(libro);
+        System.out.println("Libro agregado con éxito.");
         return true;
     }
+
+
 
     public Libro buscarLibro(String Titulo){
         for(Libro libro : this.nombrevarlista_de_libros ){
@@ -23,17 +37,6 @@ public class Biblioteca {
         }
         return null;
     }
-
-    public List<Libro> buscarLibros(String Titulo){
-        ArrayList<Libro> nombrelista_de_libros = new ArrayList<>();
-        for(Libro libro : this.nombrevarlista_de_libros ){
-            if(libro.getTitulo().equals(Titulo)){
-                nombrelista_de_libros.add(libro);
-            }
-        }
-        return nombrelista_de_libros;
-    }
-
     public void prestarLibro(String Titulo){
         Libro libro = buscarLibro(Titulo);
         if(libro != null && libro.getDisponible()){
