@@ -47,15 +47,8 @@ public class Main {
                         System.out.println("Libro no encontrado.");
                     }
                     break;
-
                 case 3:
-
-                    libro = biblioteca.Buscar_por_autor();
-                    if (libro != null) {
-                        System.out.println("Libro encontrado: " + libro);
-                    } else {
-                        System.out.println("Libro no encontrado.");
-                    }
+                    biblioteca.Buscar_por_autor();
                 case 4:
                     //biblioteca.prestarLibro();
                     break;
