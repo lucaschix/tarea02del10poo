@@ -19,11 +19,12 @@ public class Main {
             System.out.println("** Biblioteca Menu **");
             System.out.println("1. Agregar Libro");
             System.out.println("2. Buscar Libro");
-            System.out.println("3. Prestar Libro");
-            System.out.println("4. Devolver Libro");
-            System.out.println("5. Eliminar Libro");
-            System.out.println("6. Mostrar Libros Disponibles");
-            System.out.println("7. Salir");
+            System.out.println("3. Buscar Libro por autor");
+            System.out.println("4. Prestar Libro");
+            System.out.println("5. Devolver Libro");
+            System.out.println("6. Eliminar Libro");
+            System.out.println("7. Mostrar Libros Disponibles");
+            System.out.println("8. Salir");
             System.out.print("Ingrese una opción: ");
             try {
                 opcion = scanner.nextInt();
@@ -49,9 +50,14 @@ public class Main {
 
                 case 3:
 
-                    break;
+                    libro = biblioteca.Buscar_por_autor();
+                    if (libro != null) {
+                        System.out.println("Libro encontrado: " + libro);
+                    } else {
+                        System.out.println("Libro no encontrado.");
+                    }
                 case 4:
-                    biblioteca.prestarLibro();
+                    //biblioteca.prestarLibro();
                     break;
                 case 5:
                     biblioteca.devolverLibro();

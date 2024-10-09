@@ -31,6 +31,18 @@ public class Biblioteca {
         }
         return null;
     }
+
+    public Libro Buscar_por_autor(){
+        System.out.print("Ingrese el autor a buscar: ");
+        Scanner scanner = new Scanner(System.in);
+        String Autor = scanner.nextLine();
+        for(Libro libro : this.nombrevarlista_de_libros ){
+            if(libro.getAutor().equals(Autor)){
+                System.out.println("Libros de: " + libro.getAutor()+"\n | Título: " + libro.getTitulo()+" | Género: " + libro.getGenero()+" | ISBN: " + libro.getISBN() +" | Cantidad disponible: " + libro.getCantidad());
+            }
+        }
+        return null;
+    }
     public void prestarLibro(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Ingresa el tiulo del libro que deseas prestar");
