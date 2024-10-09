@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 public class Main {
     private static Biblioteca biblioteca;
@@ -12,21 +13,25 @@ public class Main {
 
     public static void mostrarMenu() {
         Scanner scanner = new Scanner(System.in);
-        int opcion;
+        int opcion = 0;
         String Titulo = "";
-
         do {
             System.out.println("** Biblioteca Menu **");
             System.out.println("1. Agregar Libro");
             System.out.println("2. Buscar Libro");
-            System.out.println("4. Prestar Libro");
-            System.out.println("5. Devolver Libro");
-            System.out.println("6. Eliminar Libro");
-            System.out.println("7. Mostrar Libros Disponibles");
-            System.out.println("8. Salir");
-
+            System.out.println("3. Prestar Libro");
+            System.out.println("4. Devolver Libro");
+            System.out.println("5. Eliminar Libro");
+            System.out.println("6. Mostrar Libros Disponibles");
+            System.out.println("7. Salir");
             System.out.print("Ingrese una opción: ");
-            opcion = scanner.nextInt();
+            try {
+                opcion = scanner.nextInt();
+            } catch (InputMismatchException e){
+                System.out.println("Entrada inválida. Por favor, intenta de nuevo.");
+               mostrarMenu();
+            }
+
             switch (opcion) {
                 case 1:
                     biblioteca.Agregar_libro();
