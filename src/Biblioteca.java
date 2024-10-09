@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 public class Biblioteca {
@@ -8,13 +9,10 @@ public class Biblioteca {
     public Biblioteca(){
         this.nombrevarlista_de_libros = new ArrayList<>();
     }
-
-
     public boolean Agregar_libro() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Ingresa  titulo, autor, ISBN, genero, cantidad y disponivilidad(true/false) del libro que desea agregar");
         String Titulo = scanner.nextLine();
-        System.out.println("Ingresa el titulo, autor, ISBN, genero,cantidad y disponivilidad(true/false) del libro");
         String Autor = scanner.nextLine();
         String ISBN = scanner.nextLine();
         String Genero = scanner.nextLine();
@@ -44,11 +42,16 @@ public class Biblioteca {
 
         }
     }
-
     public void devolverLibro(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingresa el tiulo del libro que deseas devolver");
-        String Titulo = scanner.nextLine();
+        String Titulo="";
+        try{
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Ingresa el tiulo del libro que deseas devolver");
+            Titulo = scanner.nextLine();
+        }catch (InputMismatchException e){
+            System.out.println("Entrada inválida. Por favor, intenta de nuevo.");
+            devolverLibro();
+        }
         Libro libro = buscarLibro(Titulo);
         if(libro != null){
             libro.setDisponible(true);
